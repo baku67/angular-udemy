@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
@@ -13,5 +13,9 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
 
-  users: any = DUMMY_USERS;
+  users = DUMMY_USERS;
+
+  onSelectUser(id:string) {
+    console.log('Selected user id (parent component): ' + id);
+  }
 }

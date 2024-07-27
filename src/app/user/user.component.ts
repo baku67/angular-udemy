@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { OnInit } from '@angular/core';
 
@@ -11,9 +11,19 @@ import { OnInit } from '@angular/core';
 })
 export class UserComponent {
 
-  @Input() user:any;
+  @Input({required: true}) user!:{
+    id:string;
+    name:string;
+    avatar:string;
+  };
+  @Output() select = new EventEmitter<string>();
 
   get imagePath() {
     return 'assets/users/' + this.user.avatar;
+  }
+
+  onSelectUser() {
+    console.log("Clicked: " + this.user.name);
+    this.select.emit(this.user.id);
   }
 }
