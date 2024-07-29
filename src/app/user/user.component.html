@@ -1,7 +1,10 @@
-<mat-card class="example-card">
+<mat-card class="example-card" >
 
     <mat-card-title-group>
-        <button (click)="onSelectUser()">
+        <button 
+            (click)="onSelectUser()"
+            [class.selected]="isSelected"
+        >
             <img 
                 [src]="imagePath" 
                 [alt]="user.name"

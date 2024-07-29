@@ -2,19 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { OnInit } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
-
-// type User = {
-//   id:string;
-//   name:string;
-//   avatar:string;
-// }
-
-// OU
-interface User {
-  id:string;
-  name:string;
-  avatar:string;
-} 
+import { User } from './user.model';
 
 
 @Component({
@@ -27,10 +15,19 @@ interface User {
 export class UserComponent {
 
   @Input({required: true}) user!: User;
+  @Input() selectedUserId?: string;
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
     return 'assets/users/' + this.user.avatar;
+  }
+
+  get isSelected() {
+    if(this.user.id === this.selectedUserId) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   onSelectUser() {
