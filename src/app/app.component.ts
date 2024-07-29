@@ -4,6 +4,7 @@ import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
 import { CommonModule } from '@angular/common';
 import { UserDetailsComponent } from "./user-details/user-details.component";
+import { User } from './user/user.model';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent {
   selectedUserId?: string;
 
 
-  get selectedUser() {
+  get selectedUser():User|undefined {
     return this.users.find(user => user.id === this.selectedUserId)!;
   }
 

@@ -15,20 +15,20 @@ import { User } from './user.model';
 export class UserComponent {
 
   @Input({required: true}) user!: User;
-  @Input() selectedUserId?: string;
+  @Input() selected?: boolean;
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
     return 'assets/users/' + this.user.avatar;
   }
 
-  get isSelected() {
-    if(this.user.id === this.selectedUserId) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // get isSelected() {
+  //   if(this.user.id === this.selectedUserId) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   onSelectUser() {
     console.log("Clicked: " + this.user.name);
