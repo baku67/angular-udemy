@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { OnInit } from '@angular/core';
+import {MatCardModule} from '@angular/material/card';
 
 // type User = {
 //   id:string;
@@ -19,7 +20,7 @@ interface User {
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [],
+  imports: [MatCardModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
