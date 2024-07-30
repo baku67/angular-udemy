@@ -1,16 +1,22 @@
 <!-- <div > -->
+
+    <app-new-task *ngIf="formState" (cancel)="onCancelForm()"/>
+
     <div id="tasks" *ngIf="userSelected">
 
         <header>
             <h2>{{ userSelected.name }}'s Tasks</h2>
             <menu>
-                <button mat-flat-button color="primary">Add Task</button>
+                <button (click)="toggleForm()" mat-flat-button color="primary">{{ formState ? "Cancel" : "Add Task" }}</button>
             </menu>
         </header>
 
+
+
+
         <ul>
             <li *ngFor="let task of userSelectedTasks">
-                <app-task [task]="task" />
+                <app-task [task]="task" (complete)="onCompleteTask($event)"/>
             </li>
         </ul>
 
