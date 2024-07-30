@@ -9,6 +9,7 @@ import { NewTaskData, Task } from './task/task.model';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { NewTaskComponent } from './new-task/new-task.component';
 // import * as uuid from 'uuid';
+import { TaskService } from './tasks.service';
 
 
 
@@ -23,25 +24,27 @@ export class UserDetailsComponent {
 
   @Input() userSelected?: User | null
 
-  tasks:Task[] = dummyTasks;
 
   formState:boolean = false;
 
 
+  constructor(private taskService:TaskService) {}
+
+
+
   get userSelectedTasks() {
-    return this.tasks.filter((task) => task.userId === this.userSelected?.id);
+    return this.taskService.getUserTasks(this.userSelected!.id);
   }
   
-  // userSelectedTasks:Task[] = this.tasks.filter(task => task.userId === this.userSelected?.id);
-  // ngOnInit(): void {
-  //     this.userSelectedTasks = this.tasks.filter(task => task.userId === this.userSelected?.id);
-  //     console.log(this.userSelectedTasks)
-  // }
-
-
   onCompleteTask(id:string) {
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+    return this. taskService.removeTask(id);
   }
+
+  onAddTask(taskData: NewTaskData) {
+    this.taskService.addTask(taskData, this.userSelected!.id)
+    this.formState = false; 
+  }
+
 
 
   toggleForm() {
@@ -49,19 +52,6 @@ export class UserDetailsComponent {
   }
 
   onCancelForm() {
-    this.formState = false; 
-  }
-
-  onAddTask(taskData: NewTaskData) {
-    
-    this.tasks.push({
-      id: new Date().getTime().toString(),
-      userId: this.userSelected!.id,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.dueDate,
-    });
-
     this.formState = false; 
   }
   

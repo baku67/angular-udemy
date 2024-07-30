@@ -1,16 +1,20 @@
-<mat-card class="example-card" >
+<app-card>
 
-    <mat-card-title-group>
-        <button 
-            (click)="onSelectUser()"
-            [class.selected]="selected"
-        >
-            <img 
-                [src]="imagePath" 
-                [alt]="user.name"
+    <mat-card class="example-card" >
+
+        <mat-card-title-group>
+            <button 
+                (click)="onSelectUser()"
+                [class.selected]="selected"
             >
-            <span>{{ user.name }}</span>
-        </button>
-    </mat-card-title-group>
-    
-</mat-card>
+                <img 
+                    [src]="imagePath" 
+                    [alt]="user.name"
+                >
+                <span>{{ user.name }}</span>
+            </button>
+        </mat-card-title-group>
+        
+    </mat-card>
+
+</app-card>

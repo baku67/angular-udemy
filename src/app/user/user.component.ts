@@ -3,12 +3,13 @@ import { Input } from '@angular/core';
 import { OnInit } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { User } from './user.model';
+import { CardComponent } from "../shared/card/card.component";
 
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MatCardModule, CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
