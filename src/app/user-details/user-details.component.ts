@@ -36,15 +36,9 @@ export class UserDetailsComponent {
     return this.taskService.getUserTasks(this.userSelected!.id);
   }
   
-  onCompleteTask(id:string) {
-    return this. taskService.removeTask(id);
-  }
-
-  // onAddTask(taskData: NewTaskData) {
-  //   this.taskService.addTask(taskData, this.userSelected!.id)
-  //   this.formState = false; 
+  // onCompleteTask(id:string) {
+  //   return this.taskService.removeTask(id);
   // }
-
 
 
   toggleForm() {
