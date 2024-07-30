@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input, inject } from '@angular/core';
 import { FormControl, FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { NewTaskData, Task } from '../task/task.model';
+import { TaskService } from '../tasks.service';
 
 
 @Component({
@@ -19,24 +20,33 @@ export class NewTaskComponent {
   enteredSummary = '';
   enteredDueDate = '';
 
+  private taskService = inject(TaskService);
 
-  @Output() cancel = new EventEmitter<void>();
-
-  @Output() newTask = new EventEmitter<NewTaskData>();
+  @Input({required:true}) userId!:string;
+  @Output() close = new EventEmitter<void>();
+  // @Output() newTask = new EventEmitter<NewTaskData>();
 
 
   cancelForm() {
-    this.cancel.emit();
+    this.close.emit();
   }
 
   onSubmitForm() {
 
-    // Output un event qui ajoute une task dans user-details selon le $event transmis
-    this.newTask.emit({
-      title:this.enteredTitle, 
-      summary:this.enteredSummary, 
-      dueDate:this.enteredDueDate
-    })
+    this.taskService.addTask({
+        title:this.enteredTitle, 
+        summary:this.enteredSummary, 
+        dueDate:this.enteredDueDate
+    }, this.userId)
+
+    this.close.emit();
+
+    // *** Output un event qui ajoute une task dans user-details selon le $event transmis
+    // this.newTask.emit({
+    //   title:this.enteredTitle, 
+    //   summary:this.enteredSummary, 
+    //   dueDate:this.enteredDueDate
+    // })
   }
 
 }

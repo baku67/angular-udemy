@@ -40,10 +40,10 @@ export class UserDetailsComponent {
     return this. taskService.removeTask(id);
   }
 
-  onAddTask(taskData: NewTaskData) {
-    this.taskService.addTask(taskData, this.userSelected!.id)
-    this.formState = false; 
-  }
+  // onAddTask(taskData: NewTaskData) {
+  //   this.taskService.addTask(taskData, this.userSelected!.id)
+  //   this.formState = false; 
+  // }
 
 
 
@@ -51,7 +51,7 @@ export class UserDetailsComponent {
     this.formState = !this.formState;
   }
 
-  onCancelForm() {
+  onCloseForm() {
     this.formState = false; 
   }
   

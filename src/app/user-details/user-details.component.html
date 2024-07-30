@@ -1,6 +1,6 @@
 <!-- <div > -->
 
-    <app-new-task *ngIf="formState" (cancel)="onCancelForm()" (newTask)="onAddTask($event)" />
+    <app-new-task [userId]='userSelected!.id' *ngIf="formState" (close)="onCloseForm()" />
 
     <div id="tasks" *ngIf="userSelected">
 
