@@ -5,9 +5,10 @@ import { TaskComponent } from "./task/task.component";
 import { dummyTasks } from '../dummy-tasks';
 import { OnInit } from '@angular/core';
 import { User } from '../user/user.model';
-import { Task } from './task/task.model';
+import { NewTaskData, Task } from './task/task.model';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { NewTaskComponent } from './new-task/new-task.component';
+// import * as uuid from 'uuid';
 
 
 
@@ -48,10 +49,21 @@ export class UserDetailsComponent {
   }
 
   onCancelForm() {
-    this.formState = false;
+    this.formState = false; 
   }
 
+  onAddTask(taskData: NewTaskData) {
+    
+    this.tasks.push({
+      id: new Date().getTime().toString(),
+      userId: this.userSelected!.id,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.dueDate,
+    });
 
+    this.formState = false; 
+  }
   
 
 
