@@ -1,16 +1,9 @@
 import { Component, EventEmitter, Output, Input, inject } from '@angular/core';
-import { FormControl, FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import { NewTaskData, Task } from '../task/task.model';
 import { TaskService } from '../tasks.service';
 
 
 @Component({
   selector: 'app-new-task',
-  standalone: true,
-  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule, FormsModule ],
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css'
 })

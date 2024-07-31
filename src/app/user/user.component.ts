@@ -8,8 +8,6 @@ import { CardComponent } from "../shared/card/card.component";
 
 @Component({
   selector: 'app-user',
-  standalone: true,
-  imports: [MatCardModule, CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })

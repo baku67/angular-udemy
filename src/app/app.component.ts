@@ -1,21 +1,16 @@
 import { Component, signal, computed } from '@angular/core';
-import { HeaderComponent } from './header/header.component';
-import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
 import { CommonModule } from '@angular/common';
-import { UserDetailsComponent } from "./user-details/user-details.component";
 import { User } from './user/user.model';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, HeaderComponent, UserComponent, UserDetailsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
 
-  users = DUMMY_USERS;
+  users = DUMMY_USERS; 
   selectedUserId?: string;
 
 
